@@ -1,0 +1,26 @@
+#BUILDER-START#
+# Enable rewriting.
+DirectoryIndex index.php
+RewriteEngine on
+Header add Vary "User-Agent"
+Header add X-Generated "%t"
+Options -Indexes
+Options +FollowSymLinks
+RewriteBase /
+ErrorDocument 404 "<h1>Please try again! Dont fail us!<h1>"
+## Internal Redirect Loop Protection
+RewriteCond %{ENV:REDIRECT_STATUS} 200
+RewriteRule ^ - [L]
+RewriteCond %{HTTP_USER_AGENT} 'iphone|ipad|ipod|android|nokia|ios|opera m(ob|in)i|iemobile|symbian|samsung|sec-|htc|huawei|ericsson|sonyericsson|blackberry|motorola|sagem|kyocera|zte|kddi|docomo|j-phone|kwc|lenovo|lg|mot|softbank|nec|audiovox|alcatel|sharp|sie-|sanyo|sendo|amoi|xda|bird|benq|palm|pantech|panasonic|fly|asus-|baiduispider|googlebot-mobile|nintendo|psp|dalvik|windows ce|foma|brew|webos|fennec|netfront|teleca|obigo|vodafone|up.browser|portalmmm' [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^$ index_mobile.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule (.+) index.php?p=$1 [QSA,L]
+RewriteCond %{HTTP_USER_AGENT} 'iphone|ipad|ipod|android|nokia|ios|opera m(ob|in)i|iemobile|symbian|samsung|sec-|htc|huawei|ericsson|sonyericsson|blackberry|motorola|sagem|kyocera|zte|kddi|docomo|j-phone|kwc|lenovo|lg|mot|softbank|nec|audiovox|alcatel|sharp|sie-|sanyo|sendo|amoi|xda|bird|benq|palm|pantech|panasonic|fly|asus-|baiduispider|googlebot-mobile|nintendo|psp|dalvik|windows ce|foma|brew|webos|fennec|netfront|teleca|obigo|vodafone|up.browser|portalmmm' [NC]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^/]+).* $1_mobile.html [L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^/]+).* $1.html
+#BUILDER-END#

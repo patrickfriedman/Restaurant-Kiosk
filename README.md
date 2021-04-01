@@ -1,7 +1,7 @@
 # Restaurant-Kiosk
 *Does NOT include css files
 
-*Full zip file shared vis google drive at https://drive.google.com/open?id=1cy-9iSBAa5Czo8jb-RqG7aPlUtz4sOOe
+*Full zip file shared via google drive at https://drive.google.com/open?id=1cy-9iSBAa5Czo8jb-RqG7aPlUtz4sOOe
 
 *Go to manager page to bypass access
 
